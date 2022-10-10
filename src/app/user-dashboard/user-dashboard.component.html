@@ -1,0 +1,82 @@
+
+    <section class="page-section bg-primary" id="about">
+    <div class="container">
+        <div class="">
+            <div class="">
+  
+  
+              <div class="outer-container">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="no_margin"><b>My Dashboard</b></h3>
+                            </div>
+                          
+                          </div>
+                        
+                        <div *ngIf="!IsProfile">
+                            <div class="" *ngFor="let userObj of userList.data | paginate: { id: 'UserPagination', currentPage: CurrentPage, itemsPerPage:6, totalItems: 12};let i=index;" >
+                           
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="col-md-5">
+                                            <h4 class="no_margin"><span class="label label-primary label-dark"> {{i+1}}</span></h4>     
+                                        </div>
+                                        <div class="col-md-7">
+                                        <img class="img-cls" src="{{userObj.avatar}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                    <h4 class="user-font-tag">  <a (click)="GetUserProfile(userObj.id)">{{userObj.first_name}} &nbsp;  {{userObj.last_name}} </a></h4>
+                                    </div>
+                                </div>
+                                <hr class="hr-cls"/>
+                           
+                        
+                        </div>
+                        <pagination-controls id="UserPagination" class="pull-right" (pageChange)="ChangeUserPage($event)"></pagination-controls>
+                          
+                    </div>
+                        
+
+                            <div *ngIf="IsProfile">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <b>User Profile</b>
+                                                <button type="button" class="btn btn-primary pull-right" (click)="BackToList()">Back to list</button>
+                                            </div>
+                                        </div>
+
+                                       
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                               
+                                                <div class="col-md-2">
+                                                    <img  src="{{userProfile.avatar}}">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <h4 class="no_margin_top">  {{userProfile.first_name}} &nbsp;  {{userProfile.last_name}} </h4>
+                                                    <h4>{{userProfile.email}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </div>
+                              
+                            </div>
+
+                    </div>
+                  </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+  
